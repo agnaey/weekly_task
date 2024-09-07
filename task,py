@@ -6,7 +6,8 @@ while True:
 2.view cloth details
 3.update stocks
 4.delete stocks
-5.exit
+5.search
+6.exit
 '''
     )
     ch=int(input('enter your choice :'))
@@ -60,8 +61,17 @@ while True:
                 pro.remove(i)
         if f==0:
             print('code not found')
-
     elif ch==5:
+        code=int(input('enter the code :'))
+        f=0
+        for i in pro:
+            if i['code']==code:
+                f=1
+                print('{:<10}{:<20}{:<10}{:<20}{:<15}'.format('code','name','stock','place','type'))
+
+                print('{:<10}{:<20}{:<10}{:<20}{:<15}'.format(i['code'],i['name'],i['stock'],i['place'],i['type']))
+
+    elif ch==6:
         break
     else:print('invalid number') 
                 
