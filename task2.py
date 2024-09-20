@@ -1,4 +1,4 @@
-mobiles={}
+mobiles=[{'id':101,'brand':'asus','name':'rog','camera':64,'price':59000,'stock':29}]
 while True:
     print(
         '''
@@ -15,19 +15,21 @@ while True:
         id=int(input('Enter the ID of phone: '))
         brand=input('enter the brand name: ')
         name=input('Enter the phone name: ')
-        camera=int(input('enter the resolution: '))
+        camera=int(input('enter the camera resolution: '))
         price=int(input('enter the price: '))
         stock=int(input('Enter the Stock available: '))
-        mobiles[id]={'brand':brand,'name':name,'camera':camera,'price':price,'stock':stock}
-  
+        mobiles.append([id,brand,name,camera,price,stock])   
     elif ch==2:  
-         print('{:<5}{:<10}{:<10}{:<10}{:<10}{:<10}'.format('ID', 'BRAND', 'NAME', 'CAMERA', 'PRICE', 'stock'))
          print('-' * 65)
-         for id, details in mobiles.items():
-            print('{:<5}{:<10}{:<10}{:<10}{:<10}{:<10}'.format(id, details['brand'], details['name'], details['camera'], details['price'], details['stock']))
+         print('{:<5}{:<10}{:<10}{:<10}{:<10}{:<10}'.format('id', 'brand', 'name', 'camera', 'price', 'stock'))
+         print('-' * 65)
+         for i in mobiles:
+            print('{:<5}{:<10}{:<10}{:<10}{:<10}{:<10}'.format(i['id'], i['brand'], i['name'], i['camera'], i['price'], i['stock']))
     elif ch == 3:
         id = int(input('Enter ID of the phone that you want to update : '))
-        if id in mobiles:
+        for i in mobiles:
+            if id==i['id']:
+                f=1
             while True:
                 print(
                     '''
@@ -39,50 +41,57 @@ while True:
 6. Update quantity
 7. Exit'''
                 )
-                ch = int(input('Enter your choice : '))
-                if ch == 1:
-                    new_id = int(input('Enter new ID : '))
-                    mobiles[new_id] = mobiles.pop(id)  
-                    id = new_id  
-                elif ch == 2:
-                    mobiles[id]['brand'] = input('Enter new brand name : ')
-                elif ch == 3:
-                    mobiles[id]['name'] = input('Enter new name : ')
+                ch=int(input('Enter your choice : '))
+                if ch==1:
+                    new_id=int(input('Enter new ID : '))
+                    i[id]=new_id 
+                elif ch==2:
+                    new_brand=input('Enter new brand name : ')
+                    i['brand']=new_brand
+                elif ch==3:
+                    new_name=input('Enter new name : ')
+                    i['name']=new_name
                
-                elif ch == 4:
-                    mobiles[id]['camera'] = int(input('Enter new camera resolution : '))
-                elif ch == 5:
-                    mobiles[id]['price'] = int(input('Enter new price : '))
+                elif ch==4:
+                    new_camera=int(input('Enter new camera resolution : '))
+                    i['camera']=new_camera
+                elif ch==5:
+                    new_price=int(input('Enter new price : '))
+                    i['price']=new_price
                 elif ch == 6:
-                    mobiles[id]['stock'] = int(input('Enter new stock : '))
+                    new_stock=int(input('Enter new quantity : '))
+                    i['stock']=new_stock
                 elif ch == 7:
                     break
                 else:
-                    print('Invalid choice!')
-        else:
-            print('Mobile phone not found in list')
-    elif ch==4:
-        code=int(input('enter the code :'))
-        f=0
-        for i in details:
-            if i['code']==code:
-                f=1
-                del mobiles[id]
-                print('Mobile phone deleted successfully.')
-                break
+                    print('----Invalid choice!-----')
         if f==0:
-            print('code not found')
+            print('-----Mobile phone not found in list-----')
+    elif ch==4:
+        id=int(input('enter the code :'))
+        f=0
+        for i in mobiles:
+            if id==i['id']:
+                f=1
+                mobiles.remove(i)
+                print('-----Mobile phone deleted successfully.-----')
+
+        if f==0:
+            print('----code not found----')
     elif ch == 5:
-        id = int(input('Enter ID of the phone that you want to search : '))
+        id = int(input('Enter CODE of the phone that you want to search : '))
         f = 0
-        for current_id, details in mobiles.items():
-            if id == current_id:
-                f = 1
-                print('{:<5}{:<10}{:<10}{:<10}{:<10}{:<10}'.format('ID', 'BRAND', 'NAME', 'CAMERA', 'PRICE', 'stock'))
-                print('-*80')   
-                print('{:<5}{:<10}{:<10}{:<10}{:<10}{:<10}'.format(id, details['brand'], details['name'], details['camera'], details['price'], details['stock']))
-                break
+        for i in mobiles:
+            if id==i['id']:
+                f=1
+                print('-'*80)   
+                print('{:<5}{:<10}{:<10}{:<10}{:<10}{:<10}'.format('id', 'brand', 'name', 'camera', 'price', 'stock'))
+                print('-'*80)   
+                print('{:<5}{:<10}{:<10}{:<10}{:<10}{:<10}'.format(i['id'], i['brand'], i['name'], i['camera'], i['price'], i['stock']))
+                
+        if f==0:
+            print('-----Mobile phone not found in list-----')
     elif ch==6:
         break
     else:
-        print('invalid choise')
+        print('-----invalid choise-----')
