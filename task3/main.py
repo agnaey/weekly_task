@@ -19,8 +19,8 @@ while True:
     if ch==1:
         rl.register()
     elif ch==2:
-        f=rl.login()
-        rl.login()
+        f,user=rl.login()
+        # rl.login()
         if f==1:
 
             #admin

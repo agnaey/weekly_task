@@ -27,9 +27,11 @@ def login():
     password=input('enter password :')
     f=0
     user=''
+    if username=='admin' and password=='admin':
+        f=1
     for i in lib:
         if username==i['email'] and password==i['password']:
-            f=1
+            f=2
             user=i
     if f==0:
         print('-----invalid id or password-----')
