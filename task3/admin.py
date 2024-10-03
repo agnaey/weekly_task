@@ -1,4 +1,4 @@
-# lib=[{'id': 101, 'name': 'agnaey', 'email': 'a', 'address': 'aaa', 'mobile': 36345, 'password': '1234','book':[]}]
+lib=[{'id': 101, 'name': 'agnaey', 'email': 'a', 'address': 'aaa', 'mobile': 36345, 'password': '1234','book':[]}]
 book=[{'id': 101, 'name': 'one piece', 'stock': 20, 'price': 2000},{'id': 102, 'name': 'naruto', 'stock': 15, 'price': 1500}]
 
 def add_book():

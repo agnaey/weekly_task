@@ -19,7 +19,7 @@ while True:
     if ch==1:
         rl.register()
     elif ch==2:
-        f,user=rl.login()
+        f,user1=rl.login()
         # rl.login()
         if f==1:
 
@@ -71,15 +71,15 @@ while True:
                         print('----enter data correctly----')
 
                 if sub_ch==1:
-                    user.view_profile(user)
+                    user.view_profile(user1)
                 elif sub_ch==2:
                     user.view_book()
                 elif sub_ch==3:
-                    user.book_take(user)
+                    user.book_take(user1)
                 elif sub_ch==4:
-                    user.book_return(user)
+                    user.book_return(user1)
                 elif sub_ch==5:
-                    user.book_in_hand(user)
+                    user.book_in_hand(user1)
                 else:
                     break
         else:print('------invalid username or password-------')

@@ -14,6 +14,7 @@ def view_book():
     for i in book:
         print('{:<10}{:<20}{:<10}{:<10}'.format(i['id'],i['name'],i['stock'],i['price']))
 
+
 def book_take(user):
     id=int(input('enter book id you want to add: '))
     f=0
